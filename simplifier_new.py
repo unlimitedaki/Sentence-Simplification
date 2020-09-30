@@ -6,19 +6,23 @@ Created on Fri May 31 17:45:08 2019
 """
 
 import nltk
+nltk.download('punkt')
+nltk.download('averaged_perceptron_tagger')
 from nltk.tree import ParentedTree
 from nltk.parse import stanford
 #from nltk.parse.stanford import StanfordDependencyParser as sdp
-parser1 = stanford.StanfordParser()
+
 import SBAR#from nltk.parse.stanford import StanfordDependencyParser as sdp
 from nltk.parse.stanford import StanfordParser as sp
 #os.environ['CLASSPATH']="F:\\Anaconda3\\NLP\\stanford-parser-full-2018-02-27;C:\\Users\\hp\\AppData\\Roaming\\nltk_data\\taggers\\averaged_perceptron_tagger;F:\\Anaconda3\\NLP\\stanford-ner-2015-12-09"
 #For nltk tagger
+import os
+os.environ['CLASSPATH']="/content/Sentence-Simplification/NLP/stanford-parser-full-2018-02-27"
+os.environ['STANFORD_MODELS']="NLP/stanford-ner-2015-12-09/classifiers;NLP/stanford-postagger-full-2015-12-09/models"
 '''
-os.environ['CLASSPATH']="F:\\Anaconda3\\NLP\\stanford-parser-full-2018-02-27;F:\\Anaconda3\\NLP\\stanford-postagger-full-2015-12-09;F:\\Anaconda3\\NLP\\stanford-ner-2015-12-09"
-os.environ['STANFORD_MODELS']="F:\\Anaconda3\\NLP\\stanford-ner-2015-12-09\\classifiers;F:\\Anaconda3\\NLP\\stanford-postagger-full-2015-12-09\\models"
 os.environ['JAVA_HOME']="C:\\Program Files\\Java\\jdk1.8.0_181\\bin"
 '''
+# parser1 = stanford.StanfordParser()
 parser=sp()
 '''
 To traverse thru the tree check the tree first then go on using tree[0][1][1]....[0 or 1] depending
@@ -332,7 +336,7 @@ def tokenize(sent):
     
 
 
-with open("All_types_of_inputs.txt","r") as f:
+with open("/content/comp_sentence.txt","r") as f:
     paragraph=f.read()
 sentences = nltk.sent_tokenize(paragraph)
 for sentence in sentences:
