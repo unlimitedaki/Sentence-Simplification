@@ -17,6 +17,7 @@ from nltk.parse.stanford import StanfordParser as sp
 #os.environ['CLASSPATH']="F:\\Anaconda3\\NLP\\stanford-parser-full-2018-02-27;C:\\Users\\hp\\AppData\\Roaming\\nltk_data\\taggers\\averaged_perceptron_tagger;F:\\Anaconda3\\NLP\\stanford-ner-2015-12-09"
 #For nltk tagger
 import os
+import sys
 os.environ['CLASSPATH']="/content/Sentence-Simplification/NLP/stanford-parser-full-2018-02-27"
 os.environ['STANFORD_MODELS']="NLP/stanford-ner-2015-12-09/classifiers;NLP/stanford-postagger-full-2015-12-09/models"
 '''
@@ -339,6 +340,8 @@ def tokenize(sent):
 with open("/content/comp_sentence.txt","r") as f:
     paragraph=f.read()
 sentences = nltk.sent_tokenize(paragraph)
+fout = open("result.txt",'w')
+sys.stdout = fout
 for sentence in sentences:
     print(sentences.index(sentence)),
     print("ComplexSentence: "+sentence)
